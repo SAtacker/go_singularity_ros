@@ -14,7 +14,7 @@ Install the dependencies using apt
 sudo apt-get update && sudo apt-get install -y build-essential libseccomp-dev pkg-config squashfs-tools cryptsetup
 ```
 * Visit [Go downloads](https://golang.org/dl/)
-* Copy the latest stable release link for linux , until todat 15.6 is the latest one
+* Copy the latest stable release link for linux , until today 15.6 is the latest one
 ```bash
 wget https://golang.org/dl/go1.15.6.linux-amd64.tar.gz
 ```
