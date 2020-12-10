@@ -1,7 +1,8 @@
 # Unofficial Guide
 
-## A Noobs guide by a Noob to install ros melodic on singularity
+## A Noobs guide by a Noob to install ros on singularity
 
+* In here only ros-melodic is shown , but it could be done the same way for noetic or ros2 by editing `osrf/ros:<tag_name>` [tag names](https://hub.docker.com/r/osrf/ros/tags)
 * As of Dec 10th,2020 Singularity is not supported on Windows
 * These guidlines are tested for Ubuntu 18.04 and ahead
 
