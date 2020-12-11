@@ -97,10 +97,63 @@ sudo singularity shell --writable melodic/
 * Try `apt update`
 
 ### Running roscore
+
 * To run roscore source the shell functions from ros using `/ros_entrypoint.sh roscore`
 * Try running gazebo simply by entering `gazebo` , hopefully a gui will pop up, if not see known issues
 
+### Host to Container
+
+* When Singularity ‘swaps’ the host operating system for the one inside your container, the host file systems becomes inaccessible. But you may want to read and write files on the host system from within the container. To enable this functionality, Singularity will bind directories back in via two primary methods: system-defined bind points and conditional user-defined bind points.
+
+* Before
+
+```bash
+satacker@ubuntu:~$ sudo singularity shell -w melodic/
+Singularity> cd /home/
+Singularity> ls
+Singularity> 
+```
+
+* After
+
+```bash
+satacker@ubuntu:~$ sudo singularity shell -B /home/satacker/:/home/ -w melodic/
+Singularity> cd /home/
+Singularity> ls
+Desktop    Downloads  Pictures	Templates  anaconda3	melodic  wget-log
+Documents  Music      Public	Videos	   go_projects	snap
+Singularity> 
+```
+* In the above command `-B` is the option selected and `/home/satacker/` on the host is now binded with `/home/` on the container
+
+* Beware  Mount options (opts) may be specified as ro (read-only) or rw (read/write, which is the default)
+```bash
+Singularity> touch test.test
+Singularity> ls
+Desktop    Downloads  Pictures	Templates  anaconda3	melodic  test.test
+Documents  Music      Public	Videos	   go_projects	snap	 wget-log
+Singularity> 
+```
+```bash
+satacker@ubuntu:~$ ls
+anaconda3  Documents  go_projects  Music     Public  Templates  Videos
+Desktop    Downloads  melodic      Pictures  snap    test.test  wget-log
+```
+
 ### Multiple Instances of same img
+
+### Stopping Instances
+
+```bash
+satacker@ubuntu:~$ singularity instance list
+INSTANCE NAME    PID     IP    IMAGE
+instance_1       6705          /home/satacker/melodic
+instance_2       6994          /home/satacker/melodic
+satacker@ubuntu:~$ singularity instance stop instance_1
+INFO:    Stopping instance_1 instance of /home/satacker/melodic (PID=6705)
+satacker@ubuntu:~$ singularity instance stop instance_2
+INFO:    Stopping instance_2 instance of /home/satacker/melodic (PID=6994)
+```
 
 ### Running Turtlesim
 
