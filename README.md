@@ -103,3 +103,5 @@ sudo singularity shell --writable melodic/
 ## Known issues
 * While running the gui apps the windowing system may give `No protocol specified` and `xcb_connection_has_error() returned true`
 The possible workaround (also the easiest) for this is to allow the anyone on the localhost to connect to your dislpay using `xhost +local:` - [ref](https://unix.stackexchange.com/questions/85782/error-no-protocol-specified-when-running-from-remote-machine-via-ssh)
+
+* ```libGL error: No matching fbConfigs or visuals found libGL error: failed to load driver: swrast``` The possible workaround is to install nvidia or other graphic drivers [ref](https://askubuntu.com/questions/541343/problems-with-libgl-fbconfigs-swrast-through-each-update)
