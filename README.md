@@ -94,12 +94,55 @@ cd ~ && sudo singularity build --sandbox melodic/ docker://osrf/ros:melodic-desk
 sudo singularity shell --writable melodic/
 ```
 * This will open a Shell in Singurity image with the current directory mounted by default 
-* Try `apt update`
+* Try `apt update && apt upgrade`
 
 ### Running roscore
 
-* To run roscore source the shell functions from ros using `/ros_entrypoint.sh roscore`
-* Try running gazebo simply by entering `gazebo` , hopefully a gui will pop up, if not see known issues
+```bash
+satacker@ubuntu:~$ sudo singularity shell -w melodic/
+[sudo] password for satacker: 
+Singularity> source /opt/ros/melodic/setup.bash 
+Singularity> roscore
+... logging to /root/.ros/log/b03e5adc-3b89-11eb-b60b-dcf505b1c27d/roslaunch-ubuntu-13488.log
+Checking log directory for disk usage. This may take a while.
+Press Ctrl-C to interrupt
+Done checking log file disk usage. Usage is <1GB.
+
+started roslaunch server http://ubuntu:40581/
+ros_comm version 1.14.10
+
+
+SUMMARY
+========
+
+PARAMETERS
+ * /rosdistro: melodic
+ * /rosversion: 1.14.10
+
+NODES
+
+auto-starting new master
+process[master]: started with pid [13498]
+ROS_MASTER_URI=http://ubuntu:11311/
+
+setting /run_id to b03e5adc-3b89-11eb-b60b-dcf505b1c27d
+process[rosout-1]: started with pid [13509]
+started core service [/rosout]
+
+```
+
+
+### Running Gazebo
+
+* If you get any errors please see [Known Issues](#known-issues)
+
+<html>
+    <p align="center">
+        <a href="#img">
+            <img src="images/gazebo.png" alt="Gazebo" height=720 width=1280>
+        </a>
+    </p>
+</html>
 
 ### Host to Container
 
@@ -164,7 +207,25 @@ INFO:    Stopping instance_2 instance of /home/satacker/melodic (PID=6994)
 
 ### Running Turtlesim
 
+<html>
+    <p align="center">
+        <a href="#img">
+            <img src="images/turtlesime_key.png" alt="Gazebo" height=720 width=1280>
+            <img src="images/turtlesim_key_2.png" alt="Gazebo" height=720 width=1280>
+            <img src="images/turtlesim_key_3.png" alt="Gazebo" height=720 width=1280>
+        </a>
+    </p>
+</html>
+
 ### Using Terminator
+
+<html>
+    <p align="center">
+        <a href="#img">
+            <img src="images/terminator multiple.png" alt="Gazebo" height=720 width=1280>
+        </a>
+    </p>
+</html>
 
 ## Known issues
 * While running the gui apps the windowing system may give `No protocol specified` and `xcb_connection_has_error() returned true`
