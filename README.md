@@ -142,6 +142,13 @@ Desktop    Downloads  melodic      Pictures  snap    test.test  wget-log
 
 ### Multiple Instances of same img
 
+```bash
+satacker@ubuntu:~$ singularity instance start melodic/ instance_1
+INFO:    instance started successfully
+satacker@ubuntu:~$ singularity instance start melodic/ instance_2
+INFO:    instance started successfully
+```
+
 ### Stopping Instances
 
 ```bash
