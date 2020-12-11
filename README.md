@@ -100,8 +100,16 @@ sudo singularity shell --writable melodic/
 * To run roscore source the shell functions from ros using `/ros_entrypoint.sh roscore`
 * Try running gazebo simply by entering `gazebo` , hopefully a gui will pop up, if not see known issues
 
+### Multiple Instances of same img
+
+### Running Turtlesim
+
+### Using Terminator
+
 ## Known issues
 * While running the gui apps the windowing system may give `No protocol specified` and `xcb_connection_has_error() returned true`
 The possible workaround (also the easiest) for this is to allow the anyone on the localhost to connect to your dislpay using `xhost +local:` - [ref](https://unix.stackexchange.com/questions/85782/error-no-protocol-specified-when-running-from-remote-machine-via-ssh)
 
 * ```libGL error: No matching fbConfigs or visuals found libGL error: failed to load driver: swrast``` The possible workaround is to install nvidia or other graphic drivers [ref](https://askubuntu.com/questions/541343/problems-with-libgl-fbconfigs-swrast-through-each-update) and then a reboot
+
+* While running terminator `dbus.exceptions.DBusException: org.freedesktop.DBus.Error.Spawn.ExecFailed: /usr/bin/dbus-launch terminated abnormally without any error message` D-Bus is a software bus, inter-process communication, and remote procedure call mechanism that allows communication between multiple processes running concurrently on the same machine. simply use `terminator -u`
